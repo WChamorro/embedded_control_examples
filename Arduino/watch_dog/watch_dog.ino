@@ -1,7 +1,4 @@
-#include <avr/io.h>
-// ISR interrupt service routine
-#include <avr/interrupt.h>
-#define wdt_reset() __asm__ __volatile__ ("wdr")
+
 const int pLED = 13; // LED at Pin13
 int idx;
 int accum_delay = 0;
@@ -15,9 +12,9 @@ flash();
 
 void config_wdt(){
 cli();
-MCUSR &= ~(1<<WDRF);
+MCUSR &= ~(1<<WDRF)\;
 WDTCSR |= (1<<WDCE) | (1<<WDE); // Start timed sequence
-WDTCSR = (1<<WDIE) | (1<<WDP2) | (1<<WDP1); // Set new prescaler = 128K cycles(~1 s)
+WDTCSR = (1<<WDIE) | (1<<WDP2) | (1<<WDP0)| (1<<WDE); // Set new prescaler = 128K cycles(~1 s)
 // si se agrega  (1<<WDE) se resetea el sistema 
 sei();
 }
