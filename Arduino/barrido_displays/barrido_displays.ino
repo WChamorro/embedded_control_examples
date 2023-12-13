@@ -116,7 +116,7 @@ void setup() {
 
 void loop() {
   count+=15;
-  delay(800);
+  delay(500);
 }
 
 
